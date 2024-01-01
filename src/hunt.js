@@ -23,7 +23,7 @@ app.get('/xxs', (req, res) => {
 console.log('Headers Sent Before:', res.headersSent); // Should log false
 
 // Sending the response ('OK')
-res.send('OK');
+res.send('<h2>A package to prevent Cross Site Scripting (XXS)Clickjaicking<h2/> <div><h1>A good start for 2024<h1/><div/> ');
 
 console.log('Headers Sent After Sending Body:', res.headersSent);
 });
