@@ -9,12 +9,12 @@ app.use(DenyXXSsecurityProtection());
 const port = 9883;
 
 app.use((req, res, next) => {
-    console.log('Response Header ++++:', res.getHeaders());
+    console.log('Response Header ++++: ', res.getHeaders());
     next();
 });
 
 app.use((req, res, next) => {
-    console.log('Request Header _____:', req.headers);
+    console.log('Request Header _____: ', req.headers);
     next();
 });
 
