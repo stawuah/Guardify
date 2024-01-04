@@ -1,4 +1,4 @@
-const Protection = (options = {}) => {
+const HeaderGuard = (options = {}) => {
     const { enableHSTS = true, hstsMaxAge = 31536000, enableXXSprotection = true, enableXFrameOptions = true, poweredBy = true} = options;
 
     return (req, res, next) => {
@@ -28,5 +28,5 @@ const Protection = (options = {}) => {
     };
 };
 
-module.exports =Protection;
+module.exports =HeaderGuard;
 

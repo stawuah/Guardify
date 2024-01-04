@@ -1,10 +1,10 @@
 
 const express = require('express');
 const app = express();
-const DenyXXSsecurityProtection = require('./main.js');
+const  HeaderGuard = require('./main.js');
 
 // Use security middleware before defining any routes
-app.use(DenyXXSsecurityProtection());
+app.use(HeaderGuard());
 
 const port = 9883;
 
