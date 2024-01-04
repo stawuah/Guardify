@@ -8,3 +8,4 @@ Makefile
 package-lock.json
 src/hunt.js
 README.md
+bigzip
