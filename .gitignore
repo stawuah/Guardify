@@ -9,4 +9,4 @@ package-lock.json
 src/hunt.js
 README.md
 bigzip
-.github/workflows/npm-publish.yml
+
