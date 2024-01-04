@@ -1,2 +1,10 @@
 node_modules
 coverage
+.DS_STORE
+.DS_store
+coverage
+lcov-report
+Makefile
+package-lock.json
+src/hunt.js
+README.md
