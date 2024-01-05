@@ -28,5 +28,5 @@ const HeaderGuard = (options = {}) => {
     };
 };
 
-module.exports =HeaderGuard;
+module.exports = HeaderGuard;
 
