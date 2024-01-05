@@ -1,7 +1,8 @@
 README.md     
 jest.config.js
 hunt.js
-README.md                                 
+README.md 
+bigzip/
 bigzip/hunt.js.zip                        
 bigzip/main.js.zip                        
 bigzip/xss.test.js.zip                    
