@@ -13,7 +13,7 @@ HeaderGuard is a Node.js middleware designed to enhance the security of your web
 
 ### Usage
 
-Integrate the `HeaderGuard` middleware into your Express application to effortlessly enhance its security. The middleware comes with sensible default settings, but you can easily customize its behavior based on your specific security requirements.
+Integrate the `HeaderGuard` middleware into your Express application to effortlessly enhance its security. The middleware comes with default settings, but you can easily customize its behavior based on your specific security requirements.
 
 Ensure to place the middleware early in your middleware stack to ensure that security headers are set for every incoming request. Refer to the example above for a quick setup with both default and custom options.
 
