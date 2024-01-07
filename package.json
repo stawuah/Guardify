@@ -1,8 +1,8 @@
 {
   "name": "headerguard",
-  "version": "1.0.4",
-  "description": "",
-  "main": "main.js",
+  "version": "1.0.8",
+  "description": "HeaderGuard is a Node.js middleware designed to enhance the security of your web applications by setting various HTTP security headers. It is easy to integrate and customizable based on your specific security requirements.",
+  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/stawuah/xss.git"
@@ -11,8 +11,7 @@
     "url": "http://github.com/stawuah/xss/issues"
   },
   "scripts": {
-    "xss": "nodemon hunt.js",
-    "test": "jest"
+    "xss": "node hunt.js"
   },
   "keywords": [
     "security",
@@ -28,12 +27,12 @@
     "headers",
     "clickjacking",
     "HTTPS",
-    "protect",
+    "xss",
     "Javascript",
     "defense",
     "secure headers",
     "HSTS",
-    "prevent attacks",
+    "xxs",
     "web server",
     "man-in-the-middle attacks"
   ],

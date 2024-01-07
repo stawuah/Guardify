@@ -1,3 +1,5 @@
+'use strict';
+
 const HeaderGuard = (options = {}) => {
     const { enableHSTS = true, hstsMaxAge = 31536000, enableXXSprotection = true, enableXFrameOptions = true, poweredBy = true} = options;
 
@@ -29,4 +31,6 @@ const HeaderGuard = (options = {}) => {
 };
 
 module.exports = HeaderGuard;
+
+
 
