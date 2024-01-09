@@ -1,19 +1,19 @@
 
 
-# HeaderGuard Middleware (express.js)
+# Guardify Middleware (express.js)
 
-[HeaderGuard Middleware (express.js)](https://www.npmjs.com/package/headerguard)
+[Guardify Middleware (express.js)](https://www.npmjs.com/package/headerguard)
 
-HeaderGuard is a Node.js middleware designed to enhance the security of your web applications by setting various HTTP security headers. It is easy to integrate and customizable based on your specific security requirements.
+Guardify is a Node.js middleware designed to enhance the security of your web applications by setting various HTTP security headers. It is easy to integrate and customizable based on your specific security requirements.
 
 
 ## Installation
 
-`npm i headerguard`
+`npm i guardify`
 
 ### Usage
 
-Integrate the `HeaderGuard` middleware into your Express application to effortlessly enhance its security. The middleware comes with default settings, but you can easily customize its behavior based on your specific security requirements.
+Integrate the `Guardify` middleware into your Express application to effortlessly enhance its security. The middleware comes with default settings, but you can easily customize its behavior based on your specific security requirements.
 
 Ensure to place the middleware early in your middleware stack to ensure that security headers are set for every incoming request. Refer to the example above for a quick setup with both default and custom options.
 
@@ -21,15 +21,15 @@ Feel free to explore and adapt the provided options to strike the right balance 
 
 ```
 const express = require('express');
-const HeaderGuard = require('header-guard-middleware');
+const Guardify = require('guardify');
 
 const app = express();
 
-// Use HeaderGuard middleware with default options
-app.use(HeaderGuard());
+// Use Guardify middleware with default options
+app.use(Guardify());
 
 // Or customize options
-app.use(HeaderGuard({
+app.use(Guardify({
     enableHSTS: true,
     hstsMaxAge: 31536000,
     enableXXSprotection: true,
@@ -50,7 +50,7 @@ app.listen(3001, () => {
 >  **It has it's defualt config which automatically disables the technology behind the web application**.
 
 > [!WARNING]
-> **when using security middleware like HeaderGuard, it is generally recommended to place it at the top of your middleware stack. This ensures that the security headers are set for every incoming request before other middleware or route handlers are executed. The order of middleware matters because they are executed in the order they are declared**.
+> **when using security middleware like Guardify, it is generally recommended to place it at the top of your middleware stack. This ensures that the security headers are set for every incoming request before other middleware or route handlers are executed. The order of middleware matters because they are executed in the order they are declared**.
 
 ## Options
 

@@ -1,6 +1,6 @@
 'use strict';
 
-const HeaderGuard = (options = {}) => {
+const Guardify = (options = {}) => {
     const { enableHSTS = true, hstsMaxAge = 31536000, enableXXSprotection = true, enableXFrameOptions = true, poweredBy = true} = options;
 
     return (req, res, next) => {
@@ -30,7 +30,7 @@ const HeaderGuard = (options = {}) => {
     };
 };
 
-module.exports = HeaderGuard;
+module.exports = Guardify;
 
 
 
