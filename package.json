@@ -1,6 +1,6 @@
 {
-  "name": "headerguard",
-  "version": "1.0.0",
+  "name": "guardify",
+  "version": "1.0.1",
   "description": "HeaderGuard is a Node.js middleware designed to enhance the security of your web applications by setting various HTTP security headers. It is easy to integrate and customizable based on your specific security requirements.",
   "main": "src/main.js",
   "repository": {
@@ -39,6 +39,8 @@
   "author": "Stephen Awuah Nyameke",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongoose": "8.0.4",
+    "YAW2" :"^7.2.2"
   }
 }
