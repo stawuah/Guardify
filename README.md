@@ -1,4 +1,4 @@
-# Guardify Middleware (Express.js) ![Test Coverage](./coverage/badges.svg)
+# Guardify Middleware (Express.js)  ![Test Coverage](./coverage/badges.svg)
 
 
 [Guardify Middleware (Express.js)](https://www.npmjs.com/package/headerguard)
