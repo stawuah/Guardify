@@ -1,25 +1,23 @@
+# Guardify Middleware (Express.js) ![Test Coverage](./coverage/badges.svg)
 
 
-# Guardify Middleware (express.js)
-
-[Guardify Middleware (express.js)](https://www.npmjs.com/package/headerguard)
+[Guardify Middleware (Express.js)](https://www.npmjs.com/package/headerguard)
 
 Guardify is a Node.js middleware designed to enhance the security of your web applications by setting various HTTP security headers. It is easy to integrate and customizable based on your specific security requirements.
 
-
 ## Installation
 
-`npm i guardify`
+```sh
+npm i guardify
+```
 
 ### Usage
 
 Integrate the `Guardify` middleware into your Express application to effortlessly enhance its security. The middleware comes with default settings, but you can easily customize its behavior based on your specific security requirements.
 
-Ensure to place the middleware early in your middleware stack to ensure that security headers are set for every incoming request. Refer to the example above for a quick setup with both default and custom options.
+Ensure to place the middleware early in your middleware stack to ensure that security headers are set for every incoming request. Refer to the example below for a quick setup with both default and custom options.
 
-Feel free to explore and adapt the provided options to strike the right balance between security and functionality for your web application.
-
-```
+```javascript
 const express = require('express');
 const Guardify = require('guardify');
 
@@ -35,6 +33,15 @@ app.use(Guardify({
     enableXXSprotection: true,
     enableXFrameOptions: true,
     poweredBy: true,
+    enableCORS: true,
+    corsOrigin: '*',
+    corsMethods: 'GET, POST, PUT, DELETE',
+    corsHeaders: 'Content-Type, Authorization',
+    referrerPolicy: 'no-referrer-when-downgrade',
+    permissionsPolicy: 'geolocation=(self), microphone=()',
+    customHeaders: {
+        'X-Custom-Header': 'CustomValue'
+    }
 }));
 
 // Your routes and application logic go here
@@ -43,41 +50,46 @@ app.listen(3001, () => {
     console.log('Server is running on port 3001');
 });
 ```
-> [!NOTE]
->  **By Defualt it comes with a well configured options, but also flexible to adjust the options**.
 
-> [!TIP]
->  **It has it's defualt config which automatically disables the technology behind the web application**.
+> **Note:** By default, Guardify comes with a well-configured set of security headers but is flexible enough to adjust the options as needed.
 
-> [!WARNING]
-> **when using security middleware like Guardify, it is generally recommended to place it at the top of your middleware stack. This ensures that the security headers are set for every incoming request before other middleware or route handlers are executed. The order of middleware matters because they are executed in the order they are declared**.
+> **Tip:** Guardify's default configuration automatically disables exposure of the technology behind the web application, enhancing security.
+
+> **Warning:** When using security middleware like Guardify, it is generally recommended to place it at the top of your middleware stack. This ensures that the security headers are set for every incoming request before other middleware or route handlers are executed.
 
 ## Options
 
-- `enableHSTS`: Enables HTTP Strict Transport Security (HSTS) header. When set to `true` (default), it instructs the browser to only communicate with the server over HTTPS. This is crucial for protecting against man-in-the-middle attacks. For optimal security, it's recommended to keep this option enabled.
-
-- `hstsMaxAge`: Sets the max age for HSTS in seconds. The default is `31536000` seconds (1 year). Consider adjusting this value based on your application's needs. A longer duration provides better security but might make it more challenging to switch back to HTTP if needed.
-
-- `enableXXSprotection`: Enables X-XSS-Protection header. This header helps prevent cross-site scripting (XSS) attacks by enabling the browser's built-in XSS protection. It's advisable to keep this option enabled (`true`) to enhance the security of your application.
-
-- `enableXFrameOptions`: Enables X-Frame-Options header. This header protects against clickjacking attacks by preventing the content from being embedded into other websites using frames. It's generally recommended to enable this option (`true`) to bolster your application's security.
-
-- `poweredBy`: Removes the 'X-Powered-By' header. This header exposes information about the server technology (e.g., Express). While removing it (`true`) doesn't directly enhance security, it follows the principle of security through obscurity. Attackers may find it slightly more challenging to identify vulnerabilities in specific server technologies if this information is not disclosed.
+| Option                | Default | Description |
+|-----------------------|---------|-------------|
+| `enableHSTS`         | `true`  | Enables HTTP Strict Transport Security (HSTS) to enforce HTTPS-only communication. |
+| `hstsMaxAge`        | `31536000` | Sets the max age for HSTS in seconds (default: 1 year). |
+| `enableXXSprotection` | `true`  | Enables `X-XSS-Protection` header to prevent cross-site scripting (XSS) attacks. |
+| `enableXFrameOptions` | `true`  | Enables `X-Frame-Options` header to protect against clickjacking attacks. |
+| `poweredBy`         | `true`  | Removes the `X-Powered-By` header for security through obscurity. |
+| `enableCORS`        | `false` | Enables Cross-Origin Resource Sharing (CORS) headers. |
+| `corsOrigin`        | `*` | Specifies allowed origins for CORS (default: `*`). |
+| `corsMethods`       | `'GET, POST, PUT, DELETE'` | Specifies allowed HTTP methods for CORS. |
+| `corsHeaders`       | `'Content-Type, Authorization'` | Specifies allowed HTTP headers for CORS. |
+| `referrerPolicy`    | `'no-referrer-when-downgrade'` | Controls how much referrer information is included with requests. |
+| `permissionsPolicy` | `'geolocation=(self), microphone=()'` | Defines browser feature permissions. |
+| `customHeaders`     | `{}` | Allows adding additional custom headers as key-value pairs. |
 
 ### Best Practices
 
-- For optimal security, it's recommended to enable all options (`enableHSTS`, `enableXXSprotection`, `enableXFrameOptions`, and `poweredBy`) unless specific requirements dictate otherwise.
-
-- Adjust the `hstsMaxAge` based on your application's needs. Be cautious with extremely long durations, as it may pose challenges if you need to switch back to HTTP or change the domain's security policy.
-
+- Place Guardify at the top of your middleware stack to ensure security headers are applied before other middleware.
+- Keep `enableHSTS`, `enableXXSprotection`, and `enableXFrameOptions` enabled unless specific application requirements dictate otherwise.
+- Adjust `hstsMaxAge` based on your application's needs.
 - Regularly review and update security headers based on emerging best practices and changes in your application's requirements.
 
 ## Security Headers
 
-- **Strict-Transport-Security (HSTS)**: Protects against man-in-the-middle attacks by enforcing the use of HTTPS.
-
-- **X-XSS-Protection**: Prevents cross-site scripting (XSS) attacks by enabling the browser's built-in XSS protection.
-
-- **X-Frame-Options**: Protects against clickjacking attacks by preventing content from being embedded into other websites using frames.
-
+- **Strict-Transport-Security (HSTS)**: Protects against man-in-the-middle attacks by enforcing HTTPS usage.
+- **X-XSS-Protection**: Prevents cross-site scripting (XSS) attacks.
+- **X-Frame-Options**: Protects against clickjacking attacks.
 - **X-Powered-By**: Optional - Removes the 'X-Powered-By' header for security through obscurity.
+- **Referrer-Policy**: Controls how much referrer information is included with requests.
+- **Permissions-Policy**: Restricts the use of certain browser features to improve security.
+- **CORS Headers (Optional)**: Allows cross-origin requests when enabled.
+
+With Guardify, you can ensure your application is well-protected while maintaining flexibility for customization. 🚀
+
